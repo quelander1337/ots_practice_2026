@@ -1,0 +1,264 @@
+@prefix : <http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem/> .
+
+<http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem> rdf:type owl:Ontology ;
+                                                                  rdfs:comment "Онтология солнечной системы"@ru .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#HasSatellite
+:HasSatellite rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              owl:inverseOf :orbits .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#orbits
+:orbits rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdfs:domain [ rdf:type owl:Restriction ;
+                      owl:onProperty :orbits ;
+                      owl:allValuesFrom :AstronomicalBody
+                    ] ;
+        rdfs:range [ rdf:type owl:Restriction ;
+                     owl:onProperty :orbits ;
+                     owl:someValuesFrom :AstronomicalBody
+                   ] .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#HasMass
+:HasMass rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#distanceFromSun
+:distanceFromSun rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#hasRadius
+:hasRadius rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#AstronomicalBody
+:AstronomicalBody rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Gas
+:Gas rdf:type owl:Class ;
+     rdfs:subClassOf :Planet .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Ice
+:Ice rdf:type owl:Class ;
+     rdfs:subClassOf :Planet .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#NaturalSatellite
+:NaturalSatellite rdf:type owl:Class ;
+                  rdfs:subClassOf :AstronomicalBody .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Planet
+:Planet rdf:type owl:Class ;
+        rdfs:subClassOf :AstronomicalBody .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Star
+:Star rdf:type owl:Class ;
+      rdfs:subClassOf :AstronomicalBody .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Terrestial
+:Terrestial rdf:type owl:Class ;
+            rdfs:subClassOf :Planet .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Callisto
+:Callisto rdf:type owl:NamedIndividual ,
+                   :NaturalSatellite ;
+          :orbits :Jupiter ;
+          :HasMass "1.076E23"^^xsd:double ;
+          :hasRadius "2410.3"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Deimos
+:Deimos rdf:type owl:NamedIndividual ,
+                 :NaturalSatellite ;
+        :orbits :Mars ;
+        :HasMass "1.476E15"^^xsd:double ;
+        :hasRadius "6.2"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Earth
+:Earth rdf:type owl:NamedIndividual ,
+                :Terrestial ;
+       :orbits :Sun ;
+       :HasMass "5.972E24"^^xsd:double ;
+       :distanceFromSun "149.6"^^xsd:double ;
+       :hasRadius "6371.0"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Ganymede
+:Ganymede rdf:type owl:NamedIndividual ,
+                   :NaturalSatellite ;
+          :orbits :Jupiter ;
+          :HasMass "1.481E23"^^xsd:double ;
+          :hasRadius "2634.1"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Jupiter
+:Jupiter rdf:type owl:NamedIndividual ,
+                  :Gas ;
+         :orbits :Sun ;
+         :HasMass "1.898E27"^^xsd:double ;
+         :distanceFromSun "778.5"^^xsd:double ;
+         :hasRadius "69911.0"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Mars
+:Mars rdf:type owl:NamedIndividual ,
+               :Terrestial ;
+      :orbits :Sun ;
+      :HasMass "6.417E23"^^xsd:double ;
+      :distanceFromSun "227.9"^^xsd:double ;
+      :hasRadius "3389.5"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Mercury
+:Mercury rdf:type owl:NamedIndividual ,
+                  :Terrestial ;
+         :orbits :Sun ;
+         :HasMass "3.301E23"^^xsd:double ;
+         :distanceFromSun "57.9"^^xsd:double ;
+         :hasRadius "2439.7"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Moon
+:Moon rdf:type owl:NamedIndividual ,
+               :NaturalSatellite ;
+      :orbits :Earth ;
+      :HasMass "7.342E22"^^xsd:double ;
+      :hasRadius "1737.4"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Neptune
+:Neptune rdf:type owl:NamedIndividual ,
+                  :Ice ;
+         :orbits :Sun ;
+         :HasMass "1.024E26"^^xsd:double ;
+         :distanceFromSun "4495.1"^^xsd:double ;
+         :hasRadius "24622.0"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Oberon
+:Oberon rdf:type owl:NamedIndividual ,
+                 :NaturalSatellite ;
+        :orbits :Uranus ;
+        :HasMass "3.076E21"^^xsd:double ;
+        :hasRadius "761.4"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Phobos
+:Phobos rdf:type owl:NamedIndividual ,
+                 :NaturalSatellite ;
+        :orbits :Mars ;
+        :HasMass "1.065E16"^^xsd:double ;
+        :hasRadius "11.26"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Proteus
+:Proteus rdf:type owl:NamedIndividual ,
+                  :NaturalSatellite ;
+         :orbits :Neptune ;
+         :HasMass "4.4E19"^^xsd:double ;
+         :hasRadius "210.0"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Rhea
+:Rhea rdf:type owl:NamedIndividual ,
+               :NaturalSatellite ;
+      :orbits :Saturn ;
+      :HasMass "2.306E21"^^xsd:double ;
+      :hasRadius "763.8"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Saturn
+:Saturn rdf:type owl:NamedIndividual ,
+                 :Gas ;
+        :orbits :Sun ;
+        :HasMass "5.683E26"^^xsd:double ;
+        :distanceFromSun "1433.5"^^xsd:double ;
+        :hasRadius "58232.0"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Sun
+:Sun rdf:type owl:NamedIndividual ,
+              :Star ;
+     :HasMass "1.989E30"^^xsd:double ;
+     :distanceFromSun "0.0"^^xsd:double ;
+     :hasRadius "696340.0"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Titan
+:Titan rdf:type owl:NamedIndividual ,
+                :NaturalSatellite ;
+       :orbits :Saturn ;
+       :HasMass "1.345E23"^^xsd:double ;
+       :hasRadius "2574.7"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Titania
+:Titania rdf:type owl:NamedIndividual ,
+                  :NaturalSatellite ;
+         :orbits :Uranus ;
+         :HasMass "3.4E21"^^xsd:double ;
+         :hasRadius "788.9"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Triton
+:Triton rdf:type owl:NamedIndividual ,
+                 :NaturalSatellite ;
+        :orbits :Neptune ;
+        :HasMass "2.1400000000000002E22"^^xsd:double ;
+        :hasRadius "1353.4"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Uranus
+:Uranus rdf:type owl:NamedIndividual ,
+                 :Ice ;
+        :orbits :Sun ;
+        :HasMass "8.681E25"^^xsd:double ;
+        :distanceFromSun "2872.5"^^xsd:double ;
+        :hasRadius "25362.0"^^xsd:double .
+
+
+###  http://www.semanticweb.org/matve/ontologies/2026/8/SolarSystem#Venus
+:Venus rdf:type owl:NamedIndividual ,
+                :Terrestial ;
+       :orbits :Sun ;
+       :HasMass "4.867E24"^^xsd:double ;
+       :distanceFromSun "108.2"^^xsd:double ;
+       :hasRadius "6051.8"^^xsd:double .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
